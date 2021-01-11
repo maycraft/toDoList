@@ -20,6 +20,14 @@ function App() {
     setValue('');
   }
 
+  const onChangeInput = id => {
+    const copyTasks = [...state.tasks];
+    copyTasks.forEach( task => {
+      if(task.id === id) task.checked = !task.checked; 
+    })
+    setState({ tasks: copyTasks });
+  }
+
   console.log(state.tasks);
   return (
     <div className="wrapper">
@@ -35,7 +43,15 @@ function App() {
               <button type="submit" className="btn">Добавить</button>
           </form>
           <ul className="items">
-            <Task/>
+            {
+              state.tasks.map( task => <Task key={task.id} 
+                                              id={task.id} 
+                                              text={task.text} 
+                                              checked={task.checked}
+                                              onChangeInput={onChangeInput}
+                                              /> )
+            }
+            
           </ul>
         </div>
     </div>
