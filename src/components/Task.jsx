@@ -1,12 +1,17 @@
-const Task = props => {
+const Task = ({ id, text, checked, onChangeInput }) => {
+    const HandleInputChange = id => {
+        onChangeInput(id);
+    }
     return (
         <li className="itemTask">
             <div className="inputBlock">
             <input type="checkbox"
                     className="customCheckbox" 
-                    id="3" 
+                    id={id}
+                    checked={checked}
+                    onChange={() => HandleInputChange(id)}
                     />
-            <label htmlFor="3">Тест</label>
+            <label htmlFor={id}>{text}</label>
             </div>
             <span className="close">x</span>
         </li>
