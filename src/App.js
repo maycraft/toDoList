@@ -5,6 +5,7 @@ import Task from './components/Task';
 function App() {
   const [state, setState] = useState({ tasks: [] });
   const [value, setValue] = useState('');
+  const [error, setError] = useState('');
 
   const handleChange = event => {
     setValue(event.target.value);
@@ -19,6 +20,8 @@ function App() {
     setState({ tasks: [...state.tasks, newTask] });
     setValue('');
   }
+
+  const isCheckMarked = () => state.tasks.some(item => item.checked);
   
   const onChangeInput = id => {
     const copyTasks = [...state.tasks];
@@ -35,10 +38,13 @@ function App() {
       const idx = copyTasks.indexOf(findTask);
       copyTasks.splice(idx, 1);
       setState({ tasks: copyTasks });
+      setError('');
+    }else {
+      setError('Нельзя удалить');
     }
   }
 
-  console.log(state.tasks);
+  console.log(isCheckMarked());
   return (
     <div className="wrapper">
         <div className="main">
@@ -52,6 +58,7 @@ function App() {
                       className="field"/>
               <button type="submit" className="btn">Добавить</button>
           </form>
+          <div className={`error ${(error && isCheckMarked()) && ' show'}`}>{error}</div>
           <ul className="items">
             {
               state.tasks.map( task => <Task key={task.id} 
@@ -60,6 +67,7 @@ function App() {
                                               checked={task.checked}
                                               onChangeInput={onChangeInput}
                                               removeTask={removeTask}
+                                              error={error}
                                               /> )
             }
             
