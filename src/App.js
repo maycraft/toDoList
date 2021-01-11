@@ -19,13 +19,23 @@ function App() {
     setState({ tasks: [...state.tasks, newTask] });
     setValue('');
   }
-
+  
   const onChangeInput = id => {
     const copyTasks = [...state.tasks];
     copyTasks.forEach( task => {
       if(task.id === id) task.checked = !task.checked; 
     })
     setState({ tasks: copyTasks });
+  }
+  
+  const removeTask = (id, checked) => {
+    if(!checked){
+      const copyTasks = [...state.tasks];
+      const findTask = copyTasks.find( task => task.id === id);
+      const idx = copyTasks.indexOf(findTask);
+      copyTasks.splice(idx, 1);
+      setState({ tasks: copyTasks });
+    }
   }
 
   console.log(state.tasks);
@@ -49,6 +59,7 @@ function App() {
                                               text={task.text} 
                                               checked={task.checked}
                                               onChangeInput={onChangeInput}
+                                              removeTask={removeTask}
                                               /> )
             }
             
