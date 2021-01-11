@@ -1,4 +1,5 @@
 import './App.css';
+import Task from './components/Task';
 
 function App() {
 
@@ -14,16 +15,7 @@ function App() {
               <button type="submit" className="btn">Добавить</button>
           </form>
           <ul className="items">
-            <li className="itemTask">
-              <div className="inputBlock">
-                  <input type="checkbox"
-                          className="customCheckbox" 
-                          id="3" 
-                          />
-                  <label htmlFor="3">Тест</label>
-              </div>
-              <span className="close">x</span>
-          </li>
+            <Task/>
           </ul>
         </div>
     </div>
