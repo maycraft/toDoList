@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import './App.css';
 import Task from './components/Task';
 
 function App() {
+  const [value, setValue] = useState('');
+
+  const handleChange = event => {
+    setValue(event.target.value);
+  }
 
   return (
     <div className="wrapper">
@@ -10,6 +16,8 @@ function App() {
           <form>
               <input type="text" 
                       name="task" 
+                      value={value}
+                      onChange={handleChange}
                       placeholder="Описание" 
                       className="field"/>
               <button type="submit" className="btn">Добавить</button>
