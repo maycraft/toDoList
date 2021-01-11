@@ -1,9 +1,9 @@
-const Task = ({ id, text, checked, onChangeInput, removeTask }) => {
+const Task = ({ id, text, checked, onChangeInput, removeTask, error }) => {
     const HandleInputChange = id => {
         onChangeInput(id);
     }
     return (
-        <li className="itemTask">
+        <li className={`itemTask ${(error && checked) ? ' item-error' : ''}`}>
             <div className="inputBlock">
             <input type="checkbox"
                     className="customCheckbox" 
