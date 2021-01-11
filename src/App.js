@@ -3,17 +3,29 @@ import './App.css';
 import Task from './components/Task';
 
 function App() {
+  const [state, setState] = useState({ tasks: [] });
   const [value, setValue] = useState('');
 
   const handleChange = event => {
     setValue(event.target.value);
   }
 
+  const onSubmit = event => {
+    event.preventDefault();
+    const newTask = {}
+    newTask.id = `task${new Date().getTime()}`;
+    newTask.text = value;
+    newTask.checked = false;
+    setState({ tasks: [...state.tasks, newTask] });
+    setValue('');
+  }
+
+  console.log(state.tasks);
   return (
     <div className="wrapper">
         <div className="main">
           <h1>toDoList</h1>    
-          <form>
+          <form onSubmit={onSubmit}>
               <input type="text" 
                       name="task" 
                       value={value}
