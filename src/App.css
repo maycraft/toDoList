@@ -95,8 +95,6 @@ h1 {
   width: 80%;
 }
 
-
-
 .customCheckbox+label::before {
   content: "";
   position: absolute;
