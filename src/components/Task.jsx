@@ -1,4 +1,4 @@
-const Task = ({ id, text, checked, onChangeInput }) => {
+const Task = ({ id, text, checked, onChangeInput, removeTask }) => {
     const HandleInputChange = id => {
         onChangeInput(id);
     }
@@ -13,7 +13,7 @@ const Task = ({ id, text, checked, onChangeInput }) => {
                     />
             <label htmlFor={id}>{text}</label>
             </div>
-            <span className="close">x</span>
+            <span className="close" onClick={() => removeTask(id, checked)}>x</span>
         </li>
     )
 }
