@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Task from './components/Task';
 
@@ -6,6 +6,15 @@ function App() {
   const [state, setState] = useState({ tasks: [] });
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
+
+  useEffect( () => {
+    const allTasks = localStorage.getItem('toDoList');
+    if(allTasks) setState({ tasks: JSON.parse(allTasks)});
+  }, []);
+
+  useEffect( () => {
+    localStorage.setItem('toDoList', JSON.stringify(state.tasks) );
+  }, [state.tasks])
 
   const handleChange = event => {
     setValue(event.target.value);
@@ -17,7 +26,8 @@ function App() {
     newTask.id = `task${new Date().getTime()}`;
     newTask.text = value;
     newTask.checked = false;
-    setState({ tasks: [...state.tasks, newTask] });
+    newTask.error = error;
+    setState({ tasks: [...state.tasks, newTask]});
     setValue('');
   }
 
@@ -28,7 +38,7 @@ function App() {
     copyTasks.forEach( task => {
       if(task.id === id) task.checked = !task.checked; 
     })
-    setState({ tasks: copyTasks });
+    setState({ tasks: copyTasks});
   }
   
   const removeTask = (id, checked) => {
@@ -37,14 +47,16 @@ function App() {
       const findTask = copyTasks.find( task => task.id === id);
       const idx = copyTasks.indexOf(findTask);
       copyTasks.splice(idx, 1);
-      setState({ tasks: copyTasks });
+      setState({ tasks: copyTasks});
       setError('');
     }else {
       setError('Нельзя удалить');
     }
   }
 
+  console.log(state);
   console.log(isCheckMarked());
+  console.log(error);
   return (
     <div className="wrapper">
         <div className="main">
@@ -67,7 +79,7 @@ function App() {
                                               checked={task.checked}
                                               onChangeInput={onChangeInput}
                                               removeTask={removeTask}
-                                              error={error}
+                                              error={task.error}
                                               /> )
             }
             
