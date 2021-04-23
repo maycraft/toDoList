@@ -54,9 +54,6 @@ function App() {
     }
   }
 
-  console.log(state);
-  console.log(isCheckMarked());
-  console.log(error);
   return (
     <div className="wrapper">
         <div className="main">
