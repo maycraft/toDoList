@@ -3,11 +3,11 @@
 
 __Стек:__ HTML, CSS, React, Redux, Router, LocalStorage
 
-###Инструкция по запуску
+### Инструкция по запуску
 * Скачать или клонировать проект
 * Установить зависимости `npm install`
 * Запустить в dev режиме `npm start`
 * Запустить продакшн сборку проекта `npm run build`
 
-####Посмотреть сайт:
+#### Посмотреть сайт:
 [https://cantwells.github.io/toDoList/](https://cantwells.github.io/toDoList/)
