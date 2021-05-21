@@ -10,4 +10,4 @@ __Стек:__ HTML, CSS, React, Redux, Router, LocalStorage
 * Запустить продакшн сборку проекта `npm run build`
 
 #### Посмотреть сайт:
-[https://cantwells.github.io/toDoList/](https://cantwells.github.io/toDoList/)
+[https://rjazantsev.github.io/toDoList/](https://rjazantsev.github.io/toDoList/)
