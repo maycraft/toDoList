@@ -1,7 +1,7 @@
 # React To Do List
 Простой список дел, можно добавлять, удалять и отмечать важные записи.
 
-__Стек:__ HTML, CSS, React, Redux, Router, LocalStorage
+__Стек:__ HTML, CSS, React, LocalStorage
 
 ### Инструкция по запуску
 * Скачать или клонировать проект
