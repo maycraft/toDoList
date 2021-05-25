@@ -1,8 +1,10 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import './App.css';
+import { Form } from './components/Form';
 import Task from './components/Task';
 
-function App() {
+const App = React.memo(() => {
   const [state, setState] = useState({ tasks: [] });
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
@@ -27,8 +29,10 @@ function App() {
     newTask.text = value;
     newTask.checked = false;
     newTask.error = error;
-    setState({ tasks: [...state.tasks, newTask]});
-    setValue('');
+    if(value){
+      setState({ tasks: [...state.tasks, newTask]});
+      setValue('');
+    }
   }
 
   const isCheckMarked = () => state.tasks.some(item => item.checked);
@@ -56,34 +60,29 @@ function App() {
 
   return (
     <div className="wrapper">
-        <div className="main">
-          <h1>toDoList</h1>    
-          <form onSubmit={onSubmit}>
-              <input type="text" 
-                      name="task" 
-                      value={value}
-                      onChange={handleChange}
-                      placeholder="Описание" 
-                      className="field"/>
-              <button type="submit" className="btn">Добавить</button>
-          </form>
-          <div className={`error ${(error && isCheckMarked()) && ' show'}`}>{error}</div>
-          <ul className="items">
-            {
-              state.tasks.map( task => <Task key={task.id} 
-                                              id={task.id} 
-                                              text={task.text} 
-                                              checked={task.checked}
-                                              onChangeInput={onChangeInput}
-                                              removeTask={removeTask}
-                                              error={task.error}
-                                              /> )
-            }
-            
-          </ul>
-        </div>
+      <div className="main">
+        <h1>toDoList</h1>    
+        <Form onSubmit={onSubmit} 
+              value={value} 
+              handleChange={handleChange} 
+              isDisabled={!value}  
+            />
+        <div className={`error ${(error && isCheckMarked()) && ' show'}`}>{error}</div>
+        <ul className="items">
+          {
+            state.tasks.map( task => <Task key={task.id} 
+                                            id={task.id} 
+                                            text={task.text} 
+                                            checked={task.checked}
+                                            onChangeInput={onChangeInput}
+                                            removeTask={removeTask}
+                                            error={task.error}
+                                            /> )
+          }            
+        </ul>
+      </div>
     </div>
   )
-}
+});
 
 export default App;

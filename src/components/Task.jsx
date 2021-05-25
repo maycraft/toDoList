@@ -1,9 +1,12 @@
-const Task = ({ id, text, checked, onChangeInput, removeTask, error }) => {
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const Task = React.memo(({ id, text, checked, onChangeInput, removeTask }) => {
     const HandleInputChange = id => {
         onChangeInput(id);
     }
     return (
-        <li className={`itemTask ${(error && checked) ? ' item-error' : ''}`}>
+        <li className="itemTask" >
             <div className="inputBlock">
             <input type="checkbox"
                     className="customCheckbox" 
@@ -16,6 +19,14 @@ const Task = ({ id, text, checked, onChangeInput, removeTask, error }) => {
             <span className="close" onClick={() => removeTask(id, checked)}>x</span>
         </li>
     )
+});
+
+Task.propTypes = {
+    id: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    checked: PropTypes.bool.isRequired,
+    onChangeInput: PropTypes.func.isRequired,
+    removeTask: PropTypes.func.isRequired,
 }
 
 export default Task;
