@@ -10,4 +10,4 @@ __Стек:__ HTML, CSS, React, LocalStorage
 * Запустить продакшн сборку проекта `npm run build`
 
 #### Посмотреть сайт:
-[https://rjazantsev.github.io/toDoList/](https://rjazantsev.github.io/toDoList/)
+[https://sergery.github.io/toDoList/](https://sergery.github.io/toDoList/)
