@@ -46,7 +46,7 @@ h1 {
   cursor: pointer;
 }
 
-.btn:hover {
+.btn:active {
   background: #DDDDDD;
 
 }
