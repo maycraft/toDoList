@@ -13,4 +13,4 @@
 
 #### Посмотреть сайт:
 
-[https://sergeless.github.io/toDoList/](https://sergeless.github.io/toDoList/)
+[https://webcraftt.github.io/toDoList/](https://webcraftt.github.io/toDoList/)
