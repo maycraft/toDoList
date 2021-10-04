@@ -13,4 +13,4 @@
 
 #### Посмотреть сайт:
 
-[https://webcraftt.github.io/toDoList/](https://webcraftt.github.io/toDoList/)
+[https://maycraft.github.io/toDoList/](https://maycraft.github.io/toDoList/)
